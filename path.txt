@@ -1,0 +1,1 @@
+"/run/user/1000/gvfs/smb-share:server=10.70.115.81,share=ghiam/2024/01/01"
