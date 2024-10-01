@@ -5,7 +5,7 @@ from functions import *
 parser = argparse.ArgumentParser()
 
 # Adding optional argument
-parser.add_argument("-a", "--Output", help = "Show Output")
+parser.add_argument("-a", "--Output", help = "add path to record folder")
 
 # Read arguments from command line
 args = parser.parse_args()
@@ -25,7 +25,7 @@ if os.path.exists(folder_path):
         if get_size_kb(file_path) > 1:        
         # Only process files, not subdirectories
             if os.path.isfile(file_path):
-                file_size, sr, channel, duration, silence_ratio, data = get_wav_informations(file_path)
+                _, sr, channel, _, _, data = get_wav_informations(file_path)
                 # print(f"{file_name}: {file_size}, {sr}, {channel}, {duration}, {silence_ratio}, {data}")
                 cur.execute(f"""INSERT INTO wav VALUES ("{file_name}", "{file_path}", {sr}, {channel}, "{data}")""")
                 # cur.execute(f"""INSERT INTO wav_feature VALUES ("{file_name}", "{file_size}", {duration}, {silence_ratio})""")
