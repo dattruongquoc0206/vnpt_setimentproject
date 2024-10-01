@@ -14,8 +14,7 @@ if os.path.exists(folder_path):
                 file_size, sr, channel, duration, silence_ratio, data = get_wav_informations(file_path)
                 # print(f"{file_name}: {file_size}, {sr}, {channel}, {duration}, {silence_ratio}, {data}")
                 cur.execute(f"""INSERT INTO wav VALUES ("{file_name}", "{file_path}", {sr}, {channel}, "{data}")""")
-                # cur.execute(f"""INSERT INTO wav_feature VALUES ("{file_name}", "{file_size}", {duration}, {silence_ratio})""")
-
+                cur.execute(f"""INSERT INTO wav_feature VALUES ("{file_name}", "{file_size}", {duration}, {silence_ratio})""")
                 con.commit()
 
 
